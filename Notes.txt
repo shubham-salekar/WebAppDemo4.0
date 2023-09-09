@@ -1,5 +1,5 @@
 09/09/23 
-Program Flow :
+* Program Flow :
 	
 	Strat main
     above startup
@@ -26,3 +26,14 @@ Program Flow :
     Homecontroller ctor end
     Details
     GetEmployee
+
+* we return view from Details method in Home Controller at that movement when request is go to Details it try to 
+  find  " View/Home(Because our Controller name is Home)/Details " and html file in that folder but not found hence it will give exception 
+
+    An unhandled exception occurred while processing the request.
+    InvalidOperationException: The view 'Details' was not found. The following locations were searched:
+    /Views/Home/Details.cshtml
+    /Views/Shared/Details.cshtml
+    /Pages/Shared/Details.cshtml
+
+* cshtml for cSharpHtml 
