@@ -1,0 +1,28 @@
+09/09/23 
+Program Flow :
+	
+	Strat main
+    above startup
+    after startup
+    Strat ConfigureServices
+    End ConfigureServices
+    configure start
+    useendpoint start
+    useendpoint end
+    configure end
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: https://localhost:5001
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: http://localhost:5000
+    info: Microsoft.Hosting.Lifetime[0]
+          Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+          Hosting environment: Development
+    info: Microsoft.Hosting.Lifetime[0]
+          Content root path: F:\AspDotNet\WebAppDemo4.0
+    MockEmpRepository ctor start
+    MockEmpRepository ctor end
+    Homecontroller ctor start
+    Homecontroller ctor end
+    Details
+    GetEmployee

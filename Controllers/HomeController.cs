@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using WebAppDemo4._0.Models;
 
 namespace WebAppDemo4._0.controller
 {
     public class HomeController : Controller
     {
-        private IEmpRepository _EmpRepository;
+        private IEmpRepository _MockEmpRepository;
 
-        public HomeController(IEmpRepository EmpRepository)
+        public HomeController(IEmpRepository MockEmpRepository)  // EmpRepository is instance of mockEmpRepo because we set in singleton that whenever someone request for IEmpRepository obj we return mockEmpRepo obj .
         {
-            _EmpRepository = EmpRepository;
+            Console.WriteLine("Homecontroller ctor start");
+            _MockEmpRepository = MockEmpRepository;
+            Console.WriteLine("Homecontroller ctor end");
         }
         public string Index()
         {
             //return Json( new { id = 1 , name = "max"});
-            return _EmpRepository.GetEmployee(1).Name;
+            Console.WriteLine("Index");
+            return _MockEmpRepository.GetEmployee(1).Name;
+
         }
         public ViewResult Details()
         {
-            return View(_EmpRepository.GetEmployee(1));
+            Console.WriteLine("Details");
+
+            return View(_MockEmpRepository.GetEmployee(1));
         }
     }
 }
