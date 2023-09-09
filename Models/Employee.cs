@@ -1,4 +1,5 @@
-﻿namespace WebAppDemo4._0.Models
+﻿using System;
+namespace WebAppDemo4._0.Models
 {
     public class Employee
     {
@@ -6,5 +7,8 @@
         public string Name { get; set; }
         public string Email { get; set; }
         public string Department { get; set;}
+        //Console.WriteLine("Employee");
+        
+
     }
 }
