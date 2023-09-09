@@ -2,6 +2,6 @@
 {
     public interface IEmpRepository
     {
-        Employee GetEmployee(int id);
+        Employee GetEmployee(int id); 
     }
 }

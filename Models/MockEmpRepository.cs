@@ -14,7 +14,7 @@ namespace WebAppDemo4._0.Models
             {
                 new Employee(){ Id = 1 , Name = "shubham" , Email= "a@a.com",Department = "HR" },
                 new Employee(){ Id = 2 , Name = "max" , Email= "a@a.com",Department = "HR" },
-                new Employee(){ Id = 3 , Name = "james" , Email= "a@a.com",Department = "HR" }
+                new Employee(){ Id = 3 , Name = "james" , Email= "a@a.com",Department = "HR"}
             };
         }
         public Employee GetEmployee(int id)

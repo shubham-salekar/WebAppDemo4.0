@@ -22,5 +22,5 @@ namespace WebAppDemo4._0
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    }
+    } 
 }
