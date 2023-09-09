@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppDemo4._0.Models;
 
 namespace WebAppDemo4._0
 {
@@ -17,7 +18,8 @@ namespace WebAppDemo4._0
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();                      // internally calls AddMvcCore() and also add AddJsonFormatters()
-            //services.AddMvcCore();      
+            //services.AddMvcCore();
+            services.AddSingleton<IEmpRepository , MockEmpRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +56,7 @@ namespace WebAppDemo4._0
 
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("Hello Bharat india!");
                 });
 
             });
