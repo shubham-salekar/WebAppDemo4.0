@@ -37,3 +37,12 @@
     /Pages/Shared/Details.cshtml
 
 * cshtml for cSharpHtml 
+
+10/9/23
+* Customize Views : 
+    return View("Test");
+    return View("MtViews/Test.cshtml");
+    return View("../../MtViews/Test");
+    return View("../Test/Update");
+    
+        
