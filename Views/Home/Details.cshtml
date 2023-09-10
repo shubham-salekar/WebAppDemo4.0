@@ -1,8 +1,20 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>view</title>
-    </head>
-    <body>
-        <h1>view cshtml</h1>
-    </body>
+<head>
+    <title>view</title>
+</head>
+<body>
+    <h3>@ViewData["Pagetitle"] </h3>
+    @{
+        var Employee = ViewData["Employee"] as WebAppDemo4._0.Models.Employee;
+    }
+    <div>
+        Name : @Employee.Name
+    </div>
+    <div>
+        Gmail : @Employee.Email
+    </div>
+    <div>
+        Department : @Employee.Department
+    </div>
+</body>
 </html>

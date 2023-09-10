@@ -45,4 +45,5 @@
     return View("../../MtViews/Test");
     return View("../Test/Update");
     
-        
+* ViewData method to return model from controller
+    it Did not give error messgae in compile time like spelling mistake in model name
