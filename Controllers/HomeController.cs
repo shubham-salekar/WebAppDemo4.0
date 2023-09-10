@@ -26,14 +26,10 @@ namespace WebAppDemo4._0.controller
             Console.WriteLine("Details");
 
             Employee model = _MockEmpRepository.GetEmployee(1);
-            return View(model);
-            
-            //return View("Test");
 
-            //return View("MtViews/Test.cshtml");
-            //return View("../../MtViews/Test");
-
-            //return View("../Test/Update");
+            ViewData["Employee"] = model;
+            ViewData["PageTitle"] = "Employe  Details";
+            return View();
 
         }
     }
