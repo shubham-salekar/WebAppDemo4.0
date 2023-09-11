@@ -1,3 +1,8 @@
+
+
+* https://localhost:44325/Home/Index , Home represent HomeContrtoller and Index represent method in class
+  we dont write "HomeContrtoller" fullname in url we only write "Home" and "Controller" will get bydefault.
+
 09/09/23 
 --------
 
@@ -96,6 +101,33 @@
 
     @using EmployeeManagement.Models;
     @using EmployeeManagement.ViewModels;
+
+* Null Coalesing operator 
+
+ var id;
+ Console.Writeline( id??1 );        if id is null then set 1.
+
+* Routing
+
+    Attribute Routing
+
+    endpoints.MapControllers();
+
+    Attribute Routing Parameters
+
+    [Route("home")]
+        [Route("/")]
+        [Route("")]
+        [Route("index")]
+
+        [Route("details/{id?}")]
+
+
+    Tokens in Attribute Routing
+
+     [Route("[Controller]")]
+     [Route("[action]")]
+     [Route("[action] / {id?}")]
 
 
 
