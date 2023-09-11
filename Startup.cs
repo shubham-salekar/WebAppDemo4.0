@@ -41,25 +41,14 @@ namespace WebAppDemo4._0
 
             //app.UseMvcWithDefaultRoute();
 
-            //app.Run( async (context) =>
-            //{
-            //    await context.Response.WriteAsync("hello world");
-            //});
-
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello Bharat!");
-                //});
-                //endpoints.MapControllerRoute(
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Hello Bharat!");
+                });
 
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Details}/{Id?}"
-                // );
-
-                endpoints.MapControllers(); 
-
+                endpoints.MapControllerRoute("default","{controller=Home}/{action=Details}/{Id?}");
             });
             Console.WriteLine("configure end");
 
