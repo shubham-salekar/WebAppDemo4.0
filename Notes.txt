@@ -90,6 +90,12 @@
 
     View starts in hierarchical inner folder can override outside folder file
 
+* view imports
+    _ViewImports.cshtml file is usually placed in the Views folder. It is used to include the common namespaces so we do not have to 
+    include them in every view that needs those namespaces. 
+
+    @using EmployeeManagement.Models;
+    @using EmployeeManagement.ViewModels;
 
 
 
