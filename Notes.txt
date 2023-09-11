@@ -56,7 +56,7 @@
 11/09/23
 --------
 
-Layout View
+* Layout View
     instead of writing header parts in all files we create layout file eg . _Layout.cshtml( it usually starts with _ indicates not proper file to view)
     and give below location as header
 
@@ -71,8 +71,27 @@ Layout View
     Cons:
     but this will errutating in some cases when we hav to change the location of file we must reflect that change in all files.
 
-Section for adding script file 
+* Section for adding script file 
 
     @section Scripts {
         <script src="~/js/customscript.js"></script>
     }
+
+* View Starts
+    @{
+        Layout = "_Layout";
+    }
+
+    It's a special file in ASP.NET Core MVC. The code in this file is executed before the code in an individual view is executed. So this means, 
+    instead of setting the Layout property in each individual view, we can move that code into the  " _ViewStart.cshtml file. "
+
+    By setting the Layout property in _ViewStart.cshtml file maintaining our application becomes much easier. In the future, if we want to use a 
+    different layout file we just need to change the code in one place in _ViewStart.cshtml.
+
+    View starts in hierarchical inner folder can override outside folder file
+
+
+
+
+
+
