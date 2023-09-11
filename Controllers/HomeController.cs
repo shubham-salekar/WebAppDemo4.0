@@ -15,19 +15,17 @@ namespace WebAppDemo4._0.controller
             _MockEmpRepository = MockEmpRepository;
             Console.WriteLine("Homecontroller ctor end");
         }
-        public string Index()
+        public ViewResult Index()
         {
-            //return Json( new { id = 1 , name = "max"});
-            Console.WriteLine("Index");
-            return _MockEmpRepository.GetEmployee(1).Name;
-
+            var model = _MockEmpRepository.GetAllEmployees();
+            return View(model);
         }
         public ViewResult Details()
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _MockEmpRepository.GetEmployee(1),
-                PageTitle = "Employee Details"
+                Employee = _MockEmpRepository.GetEmployee(2),
+                PageTitle = "Employee Info"
 
             };
             return View(homeDetailsViewModel);

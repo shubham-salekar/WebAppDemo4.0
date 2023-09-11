@@ -1,9 +1,11 @@
-﻿namespace WebAppDemo4._0.Models
+﻿using System.Collections.Generic;
+
+namespace WebAppDemo4._0.Models
 {
     public interface IEmpRepository
     {
         Employee GetEmployee(int id);
-        //Console.WriteLine("IEmpRepository");
+        IEnumerable<Employee> GetAllEmployees();
 
     }
 }

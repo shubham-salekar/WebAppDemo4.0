@@ -1,19 +1,18 @@
-﻿@model WebAppDemo4._0.Models.Employee
-
+﻿@model WebAppDemo4._0.ViewModel.HomeDetailsViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>view</title>
 </head>
 <body>
-    <h3>@ViewBag.PageTitle</h3>
+    <h3>@Model.PageTitle</h3>
     <div>
-        Name : @Model.Name
+        Name : @Model.Employee.Name
     </div>
     <div>
-        Gmail : @Model.Email
+        Gmail : @Model.Employee.Email
     </div>
     <div>
-        Department : @Model.Department
+        Department : @Model.Employee.Department
     </div>
 </body>
 </html>
