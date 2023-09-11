@@ -24,7 +24,7 @@ namespace WebAppDemo4._0.controller
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _MockEmpRepository.GetEmployee(2),
+                Employee = _MockEmpRepository.GetEmployee(3),
                 PageTitle = "Employee Info"
 
             };
