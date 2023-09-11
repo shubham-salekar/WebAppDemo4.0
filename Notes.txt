@@ -1,4 +1,6 @@
 09/09/23 
+--------
+
 * Program Flow :
 	
 	Strat main
@@ -39,6 +41,8 @@
 * cshtml for cSharpHtml 
 
 10/9/23
+-------
+
 * Customize Views : 
     return View("Test");
     return View("MtViews/Test.cshtml");
@@ -47,3 +51,22 @@
     
 * ViewData method to return model from controller
     it Did not give error messgae in compile time like spelling mistake in model name
+
+
+11/09/23
+--------
+
+Layout View
+instead of writing header parts in all files we create layout file eg . _Layout.cshtml( it usually starts with _ indicates not proper file to view)
+and give below location as header
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employees";
+}
+
+above code work as header and rest of the body work as  @RenderBody() in _layout file.
+
+Cons:
+but this will errutating in some cases when we hav to change the location of file we must reflect that change in all files.
