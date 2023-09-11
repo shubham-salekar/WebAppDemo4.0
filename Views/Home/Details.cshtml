@@ -1,17 +1,19 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model WebAppDemo4._0.Models.Employee
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>view</title>
 </head>
 <body>
     <h3>@ViewBag.PageTitle</h3>
     <div>
-        Name : @ViewBag.Employee.Name
+        Name : @Model.Name
     </div>
     <div>
-        Gmail : @ViewBag.Employee.Email
+        Gmail : @Model.Email
     </div>
     <div>
-        Department : @ViewBag.Employee.Department
+        Department : @Model.Department
     </div>
 </body>
 </html>

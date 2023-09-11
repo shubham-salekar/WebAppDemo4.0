@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using WebAppDemo4._0.Models;
+using WebAppDemo4._0.ViewModel;
 
 namespace WebAppDemo4._0.controller
 {
@@ -23,13 +24,13 @@ namespace WebAppDemo4._0.controller
         }
         public ViewResult Details()
         {
-            Console.WriteLine("Details");
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Employee = _MockEmpRepository.GetEmployee(1),
+                PageTitle = "Employee Details"
 
-            Employee model = _MockEmpRepository.GetEmployee(1);
-
-            ViewBag.Employee = model;
-            ViewBag.PageTitle = "Employe  Details";
-            return View();
+            };
+            return View(homeDetailsViewModel);
 
         }
     }
