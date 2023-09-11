@@ -1,8 +1,8 @@
-﻿@model WebAppDemo4._0.ViewModel.HomeDetailsViewModel
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>view</title>
-</head>
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employees";
+}
 <body>
     <h3>@Model.PageTitle</h3>
     <div>
@@ -15,4 +15,3 @@
         Department : @Model.Employee.Department
     </div>
 </body>
-</html>
