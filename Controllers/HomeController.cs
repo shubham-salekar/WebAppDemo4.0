@@ -27,8 +27,8 @@ namespace WebAppDemo4._0.controller
 
             Employee model = _MockEmpRepository.GetEmployee(1);
 
-            ViewData["Employee"] = model;
-            ViewData["PageTitle"] = "Employe  Details";
+            ViewBag.Employee = model;
+            ViewBag.PageTitle = "Employe  Details";
             return View();
 
         }
