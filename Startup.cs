@@ -48,20 +48,17 @@ namespace WebAppDemo4._0
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    /* https://localhost:44325/Home/Index , Home represent HomeContrtoller and Index represent method in class
-                      we dont write "HomeContrtoller" fullname in url we only write "Home" and "Controller" will get bydefault.*/
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{Id?}"
-                 );
-                Console.WriteLine("useendpoint start");
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Hello Bharat!");
+                //});
+                //endpoints.MapControllerRoute(
 
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Details}/{Id?}"
+                // );
 
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello Bharat india!");
-                });
-                Console.WriteLine("useendpoint end");
+                endpoints.MapControllers(); 
 
             });
             Console.WriteLine("configure end");

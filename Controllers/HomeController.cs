@@ -5,6 +5,7 @@ using WebAppDemo4._0.ViewModel;
 
 namespace WebAppDemo4._0.controller
 {
+    [Route("[Controller]")]
     public class HomeController : Controller
     {
         private IEmpRepository _MockEmpRepository;
@@ -15,16 +16,22 @@ namespace WebAppDemo4._0.controller
             _MockEmpRepository = MockEmpRepository;
             Console.WriteLine("Homecontroller ctor end");
         }
+
+        [Route("/")]
+        [Route("")]
+        [Route("[action]")]
         public ViewResult Index()
         {
             var model = _MockEmpRepository.GetAllEmployees();
             return View(model);
         }
-        public ViewResult Details()
+
+        [Route("[action]/{id?}")]
+        public ViewResult Details(int? id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _MockEmpRepository.GetEmployee(3),
+                Employee = _MockEmpRepository.GetEmployee(id??1),
                 PageTitle = "Employee Info"
 
             };
