@@ -48,7 +48,7 @@ namespace WebAppDemo4._0
                     await context.Response.WriteAsync("Hello Bharat!");
                 });
 
-                endpoints.MapControllerRoute("default","{controller=Home}/{action=Details}/{Id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Details}/{Id?}");
             });
             Console.WriteLine("configure end");
 
