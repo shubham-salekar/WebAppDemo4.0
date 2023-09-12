@@ -33,5 +33,9 @@ namespace WebAppDemo4._0.controller
             return View(homeDetailsViewModel);
 
         }
+        public ViewResult Create()
+        {
+            return View();
+        }
     }
 }
