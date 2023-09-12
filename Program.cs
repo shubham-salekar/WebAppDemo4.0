@@ -21,8 +21,7 @@ namespace WebAppDemo4._0
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
                 {
                     Console.WriteLine("above startup");
                     webBuilder.UseStartup<Startup>();
