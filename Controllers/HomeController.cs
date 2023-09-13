@@ -34,11 +34,14 @@ namespace WebAppDemo4._0.controller
 
         }
         [HttpPost]
-        public RedirectToActionResult Create(Employee employee)
+        public IActionResult Create(Employee employee)
         {
-            Employee newEmployee =  _MockEmpRepository.Add(employee);
-            return RedirectToAction("details",new {id = newEmployee.Id});
-            
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _MockEmpRepository.Add(employee);
+                return RedirectToAction("details", new { id = newEmployee.Id });
+            }
+            return View();
         }
         [HttpGet]
         public ViewResult Create()

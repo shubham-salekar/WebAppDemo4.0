@@ -123,13 +123,22 @@
         [Route("details/{id?}")]
 
 
-    Tokens in Attribute Routing
-
+    Tokens in Attribute Routing : 
      [Route("[Controller]")]
      [Route("[action]")]
      [Route("[action] / {id?}")]
 
 
+* Validations
 
+    <div asp-validation-summary="All"> return all validations 
 
+    ASP.NET Core Built-in Model Validation Attributes
+
+    Required	        Specifies the field is required
+    Range	            Specifies the minimum and maximum value allowed
+    MinLength	        Specifies the minimum length of a string
+    MaxLength	        Specifies the maximum length of a string
+    Compare	            Compares 2 properties of a model. For example compare Email and ConfirmEmail properties
+    RegularExpression	Validates if the provided value matches the pattern specified by the regular expression
 
