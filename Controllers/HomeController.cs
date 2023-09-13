@@ -33,6 +33,14 @@ namespace WebAppDemo4._0.controller
             return View(homeDetailsViewModel);
 
         }
+        [HttpPost]
+        public RedirectToActionResult Create(Employee employee)
+        {
+            Employee newEmployee =  _MockEmpRepository.Add(employee);
+            return RedirectToAction("details",new {id = newEmployee.Id});
+            
+        }
+        [HttpGet]
         public ViewResult Create()
         {
             return View();

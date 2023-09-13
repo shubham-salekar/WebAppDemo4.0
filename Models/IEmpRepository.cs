@@ -6,6 +6,6 @@ namespace WebAppDemo4._0.Models
     {
         Employee GetEmployee(int id);
         IEnumerable<Employee> GetAllEmployees();
-
+        Employee Add(Employee employee);
     }
 }
