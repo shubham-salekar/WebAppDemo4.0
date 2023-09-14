@@ -6,4 +6,9 @@
     <UserSecretsId>c40e767b-398f-403e-bc1a-b896d5438aa6</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+  </ItemGroup>
+
 </Project>
