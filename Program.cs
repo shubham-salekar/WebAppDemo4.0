@@ -27,6 +27,8 @@ namespace WebAppDemo4._0
                     webBuilder.UseStartup<Startup>();
                     Console.WriteLine("after startup");
 
-                });
+                }
+            );
+   
     } 
 }
