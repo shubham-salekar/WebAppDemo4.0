@@ -30,7 +30,7 @@ namespace WebAppDemo4._0.controller
                 PageTitle = "Employee Info"
 
             };
-            return View(homeDetailsViewModel);
+            return View(homeDetailsViewModel);  
 
         }
         [HttpPost]
