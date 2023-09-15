@@ -7,18 +7,18 @@ namespace WebAppDemo4._0.controller
 {
     public class HomeController : Controller
     {
-        private IEmpRepository _MockEmpRepository;
+        private IEmpRepository _EmpRepository;
 
-        public HomeController(IEmpRepository MockEmpRepository)  // EmpRepository is instance of mockEmpRepo because we set in singleton that whenever someone request for IEmpRepository obj we return mockEmpRepo obj .
+        public HomeController(IEmpRepository EmpRepository)  // EmpRepository is instance of mockEmpRepo because we set in singleton that whenever someone request for IEmpRepository obj we return mockEmpRepo obj .
         {
             Console.WriteLine("Homecontroller ctor start");
-            _MockEmpRepository = MockEmpRepository;
+            _EmpRepository = EmpRepository;
             Console.WriteLine("Homecontroller ctor end");
         }
 
         public ViewResult Index()
         {
-            var model = _MockEmpRepository.GetAllEmployees();
+            var model = _EmpRepository.GetAllEmployees();
             return View(model);
         }
 
@@ -26,7 +26,7 @@ namespace WebAppDemo4._0.controller
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _MockEmpRepository.GetEmployee(id??1),
+                Employee = _EmpRepository.GetEmployee(id??1),
                 PageTitle = "Employee Info"
 
             };
@@ -38,7 +38,7 @@ namespace WebAppDemo4._0.controller
         {
             if (ModelState.IsValid)
             {
-                Employee newEmployee = _MockEmpRepository.Add(employee);
+                Employee newEmployee = _EmpRepository.Add(employee);
                 return RedirectToAction("details", new { id = newEmployee.Id });
             }
             return View();
