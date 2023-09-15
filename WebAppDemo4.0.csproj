@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20230915103952_AddPhotoPath.cs" />
+    <Compile Remove="Migrations\20230915103952_AddPhotoPath.Designer.cs" />
+    <Compile Remove="Migrations\20230915104533_AddPhotoPath.cs" />
+    <Compile Remove="Migrations\20230915104533_AddPhotoPath.Designer.cs" />
+    <Compile Remove="Migrations\20230915104909_AddSomeProperty.cs" />
+    <Compile Remove="Migrations\20230915104909_AddSomeProperty.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">

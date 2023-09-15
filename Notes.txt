@@ -142,3 +142,15 @@
     Compare	            Compares 2 properties of a model. For example compare Email and ConfirmEmail properties
     RegularExpression	Validates if the provided value matches the pattern specified by the regular expression
 
+
+Migrations
+
+    from 2.1 and later version  we override OnModelCreating method for seed data.
+    we can insert or seed data in appdbcontext.cs or we for clean purpose we can create new file and seed data through that file 
+    by using model builder class  
+
+
+    we can use migration to sync our database with our model properties for that we use   add-migration command.
+    remove-migration remove latest migration if it is not updated in database (by using update-Databse)
+    if latest migration is updated in database we have to revert changes for removing migration for that we use update-migration migrationName command 
+    it revert upto specified migrationName and after that we will able to remove migration.
