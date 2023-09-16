@@ -72,6 +72,19 @@ namespace WebAppDemo4._0.controller
         public ViewResult Create()
         {
             return View();
+        }  
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            Employee employee = _EmpRepository.GetEmployee(id);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
+            {
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+
+            };
+            return View(employeeEditViewModel);
         }
     }
 }

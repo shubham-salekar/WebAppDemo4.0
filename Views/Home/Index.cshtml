@@ -3,6 +3,7 @@
     ViewBag.Title = "Employees";
 }
 <div class="card-deck row" >
+
     @foreach (var employee in Model)
     {
         var photoPath = "~/images/" + (employee.PhotoPath ?? "1.png");
@@ -15,8 +16,8 @@
             <div class="card-footer text-center">
                 <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary">View</a>
                 @*<a href="/Home/details/@employee.Id" class="btn btn-primary">View</a>*@
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                    <a asp-controller="home" asp-action="edit" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
+                    <a class="btn btn-danger">Delete</a>
             </div>
             </div>
         </div>
