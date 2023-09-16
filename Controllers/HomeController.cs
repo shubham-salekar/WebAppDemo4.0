@@ -1,19 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting.Internal;
 using System;
+using System.IO;
 using WebAppDemo4._0.Models;
 using WebAppDemo4._0.ViewModel;
+using WebAppDemo4._0.ViewModels;
 
 namespace WebAppDemo4._0.controller
 {
     public class HomeController : Controller
     {
         private IEmpRepository _EmpRepository;
+        private IWebHostEnvironment _hostingEnvironment;
 
-        public HomeController(IEmpRepository EmpRepository)  // EmpRepository is instance of mockEmpRepo because we set in singleton that whenever someone request for IEmpRepository obj we return mockEmpRepo obj .
+        public HomeController(IEmpRepository EmpRepository , IWebHostEnvironment hostingEnvironment)  
         {
-            Console.WriteLine("Homecontroller ctor start");
             _EmpRepository = EmpRepository;
-            Console.WriteLine("Homecontroller ctor end");
+            _hostingEnvironment = hostingEnvironment;
+
         }
 
         public ViewResult Index()
@@ -34,11 +41,29 @@ namespace WebAppDemo4._0.controller
 
         }
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Employee newEmployee = _EmpRepository.Add(employee);
+                string uniqueFileName = null;
+                if(model.Photos != null && model.Photos.Count > 0)
+                {
+                    foreach (IFormFile photo in model.Photos) { 
+                    
+                        string UploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                        uniqueFileName = Guid.NewGuid().ToString()+ "_" + photo.FileName;
+                        string FilePath = Path.Combine(UploadFolder, uniqueFileName);
+                        photo.CopyTo(new FileStream(FilePath, FileMode.Create));
+                    }
+                }
+                Employee newEmployee = new Employee()
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Department = model.Department,
+                    PhotoPath = uniqueFileName
+                };
+                _EmpRepository.Add(newEmployee);
                 return RedirectToAction("details", new { id = newEmployee.Id });
             }
             return View();
@@ -47,6 +72,19 @@ namespace WebAppDemo4._0.controller
         public ViewResult Create()
         {
             return View();
+        }  
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            Employee employee = _EmpRepository.GetEmployee(id);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
+            {
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+
+            };
+            return View(employeeEditViewModel);
         }
     }
 }
