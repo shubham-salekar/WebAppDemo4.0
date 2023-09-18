@@ -26,7 +26,7 @@ namespace WebAppDemo4._0.controller
 
         public ViewResult Index()
         {
-            var model = _EmpRepository.GetAllEmployees();
+            var model = _EmpRepository.GetAllEmployees ();
             return View(model);
         }
 
