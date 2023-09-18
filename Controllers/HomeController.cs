@@ -32,6 +32,14 @@ namespace WebAppDemo4._0.controller
 
         public ViewResult Details(int? id)
         {
+            Employee employee = _EmpRepository.GetEmployee(id.Value);
+
+            if(employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound" ,id.Value);
+            }
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
                 Employee = _EmpRepository.GetEmployee(id ?? 1),
