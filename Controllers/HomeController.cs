@@ -32,6 +32,8 @@ namespace WebAppDemo4._0.controller
 
         public ViewResult Details(int? id)
         {
+            throw new Exception("Error in Details view");
+
             Employee employee = _EmpRepository.GetEmployee(id.Value);
 
             if(employee == null)

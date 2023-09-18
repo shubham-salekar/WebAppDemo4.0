@@ -43,6 +43,7 @@ namespace WebAppDemo4._0
             }
             else
             {
+                app.UseExceptionHandler("/Error"); 
                 app.UseStatusCodePagesWithRedirects("/Error/{0}"); 
             }
 
