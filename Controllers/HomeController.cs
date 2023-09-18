@@ -17,7 +17,7 @@ namespace WebAppDemo4._0.controller
         private IEmpRepository _EmpRepository;
         private IWebHostEnvironment _hostingEnvironment;
 
-        public HomeController(IEmpRepository EmpRepository , IWebHostEnvironment hostingEnvironment)  
+        public HomeController(IEmpRepository EmpRepository, IWebHostEnvironment hostingEnvironment)
         {
             _EmpRepository = EmpRepository;
             _hostingEnvironment = hostingEnvironment;
@@ -34,11 +34,11 @@ namespace WebAppDemo4._0.controller
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _EmpRepository.GetEmployee(id??1),
+                Employee = _EmpRepository.GetEmployee(id ?? 1),
                 PageTitle = "Employee Info"
 
             };
-            return View(homeDetailsViewModel);  
+            return View(homeDetailsViewModel);
 
         }
         [HttpPost]
@@ -46,17 +46,7 @@ namespace WebAppDemo4._0.controller
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                if(model.Photos != null && model.Photos.Count > 0)
-                {
-                    foreach (IFormFile photo in model.Photos) { 
-                    
-                        string UploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-                        uniqueFileName = Guid.NewGuid().ToString()+ "_" + photo.FileName;
-                        string FilePath = Path.Combine(UploadFolder, uniqueFileName);
-                        photo.CopyTo(new FileStream(FilePath, FileMode.Create));
-                    }
-                }
+                string uniqueFileName = ProcessUploadFile(model);
                 Employee newEmployee = new Employee()
                 {
                     Name = model.Name,
@@ -73,7 +63,7 @@ namespace WebAppDemo4._0.controller
         public ViewResult Create()
         {
             return View();
-        }  
+        }
         [HttpGet]
         public ViewResult Edit(int id)
         {
@@ -93,6 +83,7 @@ namespace WebAppDemo4._0.controller
             if (ModelState.IsValid)
             {
                 Employee employee = _EmpRepository.GetEmployee(model.Id);
+
                 employee.Name = model.Name;
                 employee.Email = model.Email;
                 employee.Department = model.Department;
@@ -104,10 +95,10 @@ namespace WebAppDemo4._0.controller
                         string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", model.ExistingPhotopath);
                         System.IO.File.Delete(filePath);
                     }
-                     employee.PhotoPath = ProcessUploadFile(model); ;
+                    employee.PhotoPath = ProcessUploadFile(model);
                 }
 
-               _EmpRepository.Update(employee);
+                _EmpRepository.Update(employee);
 
                 return RedirectToAction("details", new { id = model.Id });
             }
@@ -125,7 +116,10 @@ namespace WebAppDemo4._0.controller
                     string UploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
                     string FilePath = Path.Combine(UploadFolder, uniqueFileName);
-                    photo.CopyTo(new FileStream(FilePath, FileMode.Create));
+                    using(var filestream = new FileStream(FilePath, FileMode.Create))
+                    {
+                        photo.CopyTo(filestream);
+                    }
                 }
             }
             return uniqueFileName;
