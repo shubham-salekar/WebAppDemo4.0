@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,9 +30,15 @@ namespace WebAppDemo4._0
         {
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("EmployeeDbConnection")));
 
-            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<ApplocationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddMvc();                      // internally calls AddMvcCore() and also add AddJsonFormatters()
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()       // setting [Authorize] Attr Globally.
+                                .RequireAuthenticatedUser()
+                                .Build();
+                config.Filters.Add( new AuthorizeFilter(policy));
+            });                      // internally calls AddMvcCore() and also add AddJsonFormatters()
             //services.AddMvcCore();
             services.AddScoped<IEmpRepository, SQLEmpRepository>();  
 
@@ -52,7 +60,7 @@ namespace WebAppDemo4._0
 
             app.UseFileServer();
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>

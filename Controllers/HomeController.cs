@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -23,13 +24,13 @@ namespace WebAppDemo4._0.controller
             _hostingEnvironment = hostingEnvironment;
 
         }
-
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _EmpRepository.GetAllEmployees ();
             return View(model);
         }
-
+        [AllowAnonymous]
         public ViewResult Details(int? id)
         {
            
@@ -74,6 +75,7 @@ namespace WebAppDemo4._0.controller
             return View();
         }
         [HttpGet]
+        //[Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _EmpRepository.GetEmployee(id);
@@ -87,6 +89,7 @@ namespace WebAppDemo4._0.controller
             return View(employeeEditViewModel);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             if (ModelState.IsValid)
