@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 
-public class ApplocationUser : IdentityUser
+public class ApplicationUser : IdentityUser
 {
     public string City { get; set; }   
 }

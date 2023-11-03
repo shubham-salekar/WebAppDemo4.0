@@ -8,11 +8,11 @@ namespace WebAppDemo4._0.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplocationUser> userManager;
-        private readonly SignInManager<ApplocationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<ApplocationUser> userManager,
-                                SignInManager<ApplocationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager,
+                                SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -35,7 +35,7 @@ namespace WebAppDemo4._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                var User = new ApplocationUser { 
+                var User = new ApplicationUser { 
                     UserName = model.Email, 
                     Email = model.Email ,
                     City = model.City 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using WebAppDemo4._0.ValidationAttributes;
 
 namespace WebAppDemo4._0.ViewModels
@@ -8,6 +9,7 @@ namespace WebAppDemo4._0.ViewModels
         [Required]
         [EmailAddress]
         [ValidEmailDomain(allowDomain:"c2w.com",ErrorMessage ="Email Domain should be c2w.com")]
+        [Remote(action: "IsEmailInUse", controller: "account")]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]

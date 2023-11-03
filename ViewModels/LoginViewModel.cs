@@ -8,7 +8,7 @@ namespace WebAppDemo4._0.ViewModels
     {
         [Required]
         [EmailAddress]
-        [Remote(action:"IsEmailInUse",controller:"account")]
+        
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
